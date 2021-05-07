@@ -3,6 +3,8 @@ const axios = require('axios')
 
 const {database} = require('../config')
 
+const {pushToMessageQ} = require('../messageQ')
+
 exports.typeDefs = gql`
     type Query {
         mails: [Mail]
@@ -37,6 +39,7 @@ exports.resolvers = {
     },
     Mutation: {
         mail: (_,args) => {
+            pushToMessageQ(args)
             return post('/', args)
         }
     }

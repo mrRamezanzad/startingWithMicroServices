@@ -10,6 +10,7 @@
   "author": "mrRamezanzad",
   "license": "ISC",
   "dependencies": {
+    "amqplib": "^0.7.1",
     "apollo-server-express": "^2.24.0",
     "axios": "^0.21.1",
     "body-parser": "^1.19.0",
