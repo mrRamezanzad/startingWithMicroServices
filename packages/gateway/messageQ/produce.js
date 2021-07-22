@@ -1,11 +1,11 @@
 const amqp = require('amqplib/callback_api')
 const { chainResolvers } = require('apollo-server-express')
-const {q: {host}} = require('../config')
+const {q: {uri}} = require('../config')
 
 let q = 'mail_service'
 let channel = null
 
-amqp.connect(host, (err, conn) => {
+amqp.connect(uri, (err, conn) => {
     if (err) console.log(err)
     
     conn.createChannel((err, ch) => {
@@ -18,9 +18,8 @@ amqp.connect(host, (err, conn) => {
 exports.pushToMessageQ = msg => {
 
     if (channel === null) {
-        setTimeout(pushToMessageQ(msg), 1000)
+        return setTimeout(pushToMessageQ(msg), 1000)
     }
-    console.log('i got here: ', msg);
     channel.sendToQueue(q, Buffer.from(JSON.stringify(msg)))
 
 }

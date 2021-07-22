@@ -1,4 +1,4 @@
-const {PORT} = process.env
+const {PORT, Q_URI} = process.env
 
 const port = PORT || 80
 
@@ -7,7 +7,7 @@ const database = {
 }
 
 const q = {
-    host: "amqps://ritgeven:u9dd0zQnk_nn9axaNTh6qxvosRKUIBI9@baboon.rmq.cloudamqp.com/ritgeven"
+    uri: Q_URI || "blahbla" 
 }
 
 module.exports = {port, database, q}

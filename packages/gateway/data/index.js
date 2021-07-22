@@ -3,7 +3,7 @@ const axios = require('axios')
 
 const {database} = require('../config')
 
-const {pushToMessageQ} = require('../messageQ')
+const {pushToMessageQ} = require('../messageQ/produce.js')
 
 exports.typeDefs = gql`
     type Query {
